@@ -1,27 +1,20 @@
-# Задайте список из нескольких чисел. 
-# Напишите программу, которая найдёт сумму элементов списка, стоящих на нечётной позиции.
+# Вычислить число c заданной точностью d
 # Пример:
-# [2, 3, 5, 9, 3] -> на нечётных позициях элементы 3 и 9, ответ: 12
+# при $d = 0.001, π = 3.141.$    $10^{-1} ≤ d ≤10^{-10}$
 
-listA = []
-listB = []
-summ = 0
-a = int(input())
-for i in range(a):
-    b = int(input())
-    listA.append(b)
-
-for i in range(len(listA)):
-    if i % 2 != 0:
-        listB.append(listA[i])
-
-print(f'{listA} -> на нечетных позициях элементы', end= ' ')
-for i in range(len(listB) -1):
-    print(listB[i], end= ' и ')
-print(f'{listB[-1]}, ответ:', end= ' ')
-
-for i in range(len(listB)):
-    summ += listB[i]
-
-print(summ)
-
+d=input('Введите точность вывода числа π от 0.1 до 0.0000000001')
+def dCount(f):
+    if "." in f:
+         return len(f.split(".")[1].rstrip("0"))
+    else:
+         return 0
+d =int( dCount(d) )      
+k = 1
+s = 0
+for i in range ( 10000000 ):
+    if i % 2== 0 :
+        s += 4 / k
+    else :
+        s -= 4 / k
+    k += 2
+print ('Число π равно : ',round(s,d))
